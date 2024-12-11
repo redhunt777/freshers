@@ -37,7 +37,7 @@ router.post("/verify", verifyToken, (req, res) => {
   verification(req, res);
 });
 
-router.get("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   logout(req, res);
 });
 
