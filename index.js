@@ -19,7 +19,7 @@ const __dirname = dirname(__filename);
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(morgan("dev"));
+app.use(morgan("combined"));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
