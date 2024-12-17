@@ -13,7 +13,7 @@ function uniqueNumber(email) {
 export const checkout = async (req, res) => {
   try {
     const { category, email } = req.body;
-    const amount = category === "senior" ? 1200 : 600;
+    const amount = category === "senior" ? 1500 : 600;
     const transactionRef = uniqueNumber(email);
     const message = email;
     const paymentLink = `upi://pay?pa=${encodeURIComponent(
