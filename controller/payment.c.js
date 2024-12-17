@@ -13,7 +13,7 @@ function uniqueNumber(email) {
 export const checkout = async (req, res) => {
   try {
     const { category, email } = req.body;
-    const amount = category === "senior" ? 1500 : 600;
+    const amount = category === "senior" ? 1600 : 600;
     const transactionRef = uniqueNumber(email);
     const message = email;
     const paymentLink = `upi://pay?pa=${encodeURIComponent(
@@ -99,8 +99,11 @@ export const paymentDone = async (req, res) => {
 
 export const verifyPayment = async (req, res) => {
   try {
-    const { utr, admin } = req.body;
-    if (!admin) {
+    const { utr, email } = req.body;
+
+    // checking in database for admin
+    const user = await auth.findOne({ email }); // checking if the user is admin
+    if (!user.admin) {
       return res.status(403).json({
         status: false,
         message: "Unauthorized access",
