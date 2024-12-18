@@ -111,12 +111,25 @@ export const login = async (req, res) => {
 
 export const signup = async (req, res) => {
   const data = req.body;
+  const email = data.email;
+  // Regular expression to extract the year
+  const match = email.match(/btech\d+\.(\d{2})@bitmesra\.ac\.in/);
+  let category;
+  if (match) {
+    const year = match[1]; // The captured group contains the year
+    if (year == 23) {
+      category = "senior";
+    }
+  } else if (year == 24) {
+    category = "junior";
+  }
+
   try {
     const hashedPassword = await bcryptjs.hash(data.password, 10);
     const newStudent = new auth({
       name: data.name,
       email: data.email,
-      category: data.category,
+      category: category,
       password: hashedPassword,
       mobile: data.mobile,
       paymentDone: false,
