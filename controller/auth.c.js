@@ -120,7 +120,7 @@ export const signup = async (req, res) => {
     if (year == 23) {
       category = "senior";
     }
-  } else if (year == 24) {
+  } else {
     category = "junior";
   }
 
