@@ -33,6 +33,8 @@ export const generateOTP = async (req, res) => {
       const year = match[1]; // The captured group contains the year
       if (year == 23) {
         category = "senior";
+      } else if (year == 24) {
+        category = "junior";
       }
     } else if (year == 24) {
       category = "junior";
@@ -119,6 +121,8 @@ export const signup = async (req, res) => {
     const year = match[1]; // The captured group contains the year
     if (year == 23) {
       category = "senior";
+    } else if (year == 24) {
+      category = "junior";
     }
   } else {
     category = "junior";
